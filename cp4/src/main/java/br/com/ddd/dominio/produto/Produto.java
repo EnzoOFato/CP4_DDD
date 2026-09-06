@@ -17,7 +17,7 @@ public class Produto {
 
         this.nome = nome;
         this.preco = preco;
-        this.categoria = categoria;
+        this.categoria = categoria.toUpperCase();
 
         this.id = seq++;
     }
@@ -48,10 +48,11 @@ public class Produto {
     public String toString() {
         if (Objects.isNull(this)) return "Esse objeto não existe";
         return """
+                Produto Id: %d
                 Produto: %s
-                Preço: %.2f
+                Preço: R$ %.2f
                 Categoria: %s
-                """.formatted(this.nome, this.preco, this.categoria);
+                """.formatted(this.id, this.nome, this.preco, this.categoria);
     }
 
 }

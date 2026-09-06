@@ -39,7 +39,7 @@ public class ProdutoRepositorioMemoria implements ProdutoRepository {
     public Set<String> listarCategorias() {
         Set<String> resultado = new HashSet<>();
 
-        listarTodos().stream().filter(p -> resultado.add(p.getCategoria()));
+        listarTodos().stream().forEach(p -> resultado.add(p.getCategoria()));
 
         return resultado;
     }
