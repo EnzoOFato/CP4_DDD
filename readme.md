@@ -2,6 +2,8 @@
 
 ## Gabarito Perguntas - 1 a 12:
 
+### Aluno: Enzo Amá Fatobene RM: 562138
+
 **1)** O que é uma **Entidade** em DDD?
 
 a) Uma classe que só guarda dados, sem comportamento
@@ -129,3 +131,19 @@ c) Lança uma exceção
 d) Não compila
 
 Resposta: b)
+
+1. Por que usamos `Optional<Produto>` no método `buscarPorId` em vez de simplesmente retornar `Produto` (que poderia ser `null`)?
+
+Para evitarmos uma NullpointerException ou que nosso objeto seja nulo de qualquer forma, afinal de contas, o método de busca por ID não necessáriamente encontrará um produto, assim, idealmente temos que lidar com essa possível exceção.
+
+2. Por que `listarCategorias()` retorna um `Set` e não uma `List`?
+
+Pois categorias devem ser únicas, no sentido de que não podem existir duas categorias "VERDURA" por exemplo, logo, para contornar o problema, usamos SET, uma estrutura de dados que não permite a inserção de objetos iguais.
+
+3. Se no futuro quisermos trocar `ProdutoRepositorioMemoria` por uma versão que usa MySQL (como fizemos na aula com `Cliente`), o que precisa mudar na classe `Main`? E no `Produto`?
+
+Na main, mudaria apenas a declaração do objeto de persistência, o `ProdutoRepositorioMemoria`, afinal de contas, o repository já assumi essa função mais esclável. Enquanto o Produto, mudaria para ser a representação de uma tabela no banco de dados, com as verificações das regras de negócio mais dedicadas as outras camadas da aplicação.
+
+4. Qual estrutura de coleção vocês usaram dentro de `ProdutoRepositorioMemoria` para guardar os produtos, e por quê?
+
+HashMap, pois é mais fácil é difundido guardar essas informações em uma lógica de chave, valor. Pois a consulta, inserção, atualização e elimição de dados ocorrem de maneira mais eficiente (O(1)).
